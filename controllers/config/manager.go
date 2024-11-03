@@ -39,6 +39,9 @@ func (c *Manager) Reconcile(ctx context.Context, request reconcile.Request) (res
 	if _, err = cfg.ProtectedNamespaceRegexp(); err != nil {
 		panic(errors.Wrap(err, "Invalid configuration for protected Namespace regex"))
 	}
+	if _, err = cfg.ExcludedNamespaceRegexp(); err != nil {
+		panic(errors.Wrap(err, "Invalid configuration for excluded Namespace regex"))
+	}
 
 	c.Log.Info("CapsuleConfiguration reconciliation finished", "request.name", request.Name)
 

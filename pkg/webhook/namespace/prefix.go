@@ -45,6 +45,13 @@ func (r *prefixHandler) OnCreate(clt client.Client, decoder admission.Decoder, r
 				return &response
 			}
 		}
+	
+		// Ignore excluded namespaces
+		if exp, _ := r.configuration.ExcludedNamespaceRegexp(); exp != nil {
+			if matched := exp.MatchString(ns.GetName()); matched {
+				return nil
+			}
+		}
 
 		if r.configuration.ForceTenantPrefix() {
 			tnt := &capsulev1beta2.Tenant{}

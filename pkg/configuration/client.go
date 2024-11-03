@@ -14,6 +14,7 @@ import (
 
 	capsulev1beta2 "github.com/projectcapsule/capsule/api/v1beta2"
 	capsuleapi "github.com/projectcapsule/capsule/pkg/api"
+
 )
 
 // capsuleConfiguration is the Capsule Configuration retrieval mode
@@ -33,6 +34,7 @@ func NewCapsuleConfiguration(ctx context.Context, client client.Client, name str
 						UserGroups:                     []string{"projectcapsule.dev"},
 						ForceTenantPrefix:              false,
 						ProtectedNamespaceRegexpString: "",
+						ExcludedNamespaceRegexpString: "",
 					},
 				}
 			}
@@ -52,6 +54,20 @@ func (c *capsuleConfiguration) ProtectedNamespaceRegexp() (*regexp.Regexp, error
 	r, err := regexp.Compile(expr)
 	if err != nil {
 		return nil, errors.Wrap(err, "Cannot compile the protected namespace regexp")
+	}
+
+	return r, nil
+}
+
+func (c *capsuleConfiguration) ExcludedNamespaceRegexp() (*regexp.Regexp, error) {
+	expr := c.retrievalFn().Spec.ExcludedNamespaceRegexpString
+	if len(expr) == 0 {
+		return nil, nil //nolint:nilnil
+	}
+
+	r, err := regexp.Compile(expr)
+	if err != nil {
+		return nil, errors.Wrap(err, "Cannot compile the excluded namespace regexp")
 	}
 
 	return r, nil

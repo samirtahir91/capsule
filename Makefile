@@ -5,8 +5,8 @@ GOOS                 ?= $(shell go env GOOS)
 GOARCH               ?= $(shell go env GOARCH)
 
 # Defaults
-REGISTRY        ?= ghcr.io
-REPOSITORY      ?= projectcapsule/capsule
+REGISTRY        ?= samirtahir91076
+REPOSITORY      ?= capsule
 GIT_TAG_COMMIT  ?= $(shell git rev-parse --short $(VERSION))
 GIT_MODIFIED_1  ?= $(shell git diff $(GIT_HEAD_COMMIT) $(GIT_TAG_COMMIT) --quiet && echo "" || echo ".dev")
 GIT_MODIFIED_2  ?= $(shell git diff --quiet && echo "" || echo ".dirty")

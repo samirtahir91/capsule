@@ -20,6 +20,8 @@ type CapsuleConfigurationSpec struct {
 	ForceTenantPrefix bool `json:"forceTenantPrefix,omitempty"`
 	// Disallow creation of namespaces, whose name matches this regexp
 	ProtectedNamespaceRegexpString string `json:"protectedNamespaceRegex,omitempty"`
+	// Ignore tenant enforcement on namespaces created, whose name matches this regexp
+	ExcludedNamespaceRegexpString string `json:"excludedNamespaceRegex,omitempty"`
 	// Allows to set different name rather than the canonical one for the Capsule configuration objects,
 	// such as webhook secret or configurations.
 	// +kubebuilder:default={TLSSecretName:"capsule-tls",mutatingWebhookConfigurationName:"capsule-mutating-webhook-configuration",validatingWebhookConfigurationName:"capsule-validating-webhook-configuration"}
