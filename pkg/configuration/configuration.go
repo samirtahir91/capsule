@@ -15,7 +15,7 @@ const (
 
 type Configuration interface {
 	ProtectedNamespaceRegexp() (*regexp.Regexp, error)
-	ExcludedNamespaceRegexpString() (*regexp.Regexp, error)
+	ExcludedNamespaceRegexp() (*regexp.Regexp, error)
 	ForceTenantPrefix() bool
 	// EnableTLSConfiguration enabled the TLS reconciler, responsible for creating CA and TLS certificate required
 	// for the CRD conversion and webhooks.

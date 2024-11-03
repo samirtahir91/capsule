@@ -1,4 +1,4 @@
-module github.com/samirtahir91/capsule
+module github.com/projectcapsule/capsule
 
 go 1.22.5
 
@@ -7,7 +7,6 @@ require (
 	github.com/onsi/ginkgo/v2 v2.20.2
 	github.com/onsi/gomega v1.34.2
 	github.com/pkg/errors v0.9.1
-	github.com/projectcapsule/capsule v0.7.2
 	github.com/prometheus/client_golang v1.20.5
 	github.com/spf13/pflag v1.0.5
 	github.com/stretchr/testify v1.9.0
