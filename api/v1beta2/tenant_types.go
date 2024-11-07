@@ -60,8 +60,8 @@ type TenantSpec struct {
 	// Enforces Namespaces created for this Tenant to be named with the Tenant name prefix,
 	// separated by a dash (i.e. for Tenant 'foo', namespace names must be prefixed with 'foo-').
 	// This is useful to avoid Namespace name collision.
-	// +kubebuilder:default=false
-	ForceTenantPrefix bool `json:"forceTenantPrefix,omitempty"`
+	// Optional
+	ForceTenantPrefix *bool `json:"forceTenantPrefix,omitempty"`
 }
 
 // +kubebuilder:object:root=true

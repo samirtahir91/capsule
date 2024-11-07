@@ -293,7 +293,7 @@ func (h *handler) listTenantsForOwnerKind(ctx context.Context, ownerKind string,
 
 func (h *handler) validateNamespacePrefix(ns *corev1.Namespace, tenant *capsulev1beta2.Tenant) *admission.Response {
 	// Check if ForceTenantPrefix is true
-	if tenant.Spec.ForceTenantPrefix {
+	if tenant.Spec.ForceTenantPrefix != nil && *tenant.Spec.ForceTenantPrefix {
 		if !strings.HasPrefix(ns.GetName(), fmt.Sprintf("%s-", tenant.GetName())) {
 			response := admission.Denied(fmt.Sprintf("The Namespace name must start with '%s-' when ForceTenantPrefix is enabled in the Tenant.", tenant.GetName()))
 

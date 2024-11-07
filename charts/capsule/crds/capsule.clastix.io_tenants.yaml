@@ -1150,12 +1150,12 @@ spec:
                   resources cannot be deleted.
                 type: boolean
               forceTenantPrefix:
-                default: false
                 description: |-
                   Use this if you want to enforce the Tenant name prefix to specific Tenants instead of globally with forceTenantPrefix in CapsuleConfiguration.
                   Enforces Namespaces created for this Tenant to be named with the Tenant name prefix,
                   separated by a dash (i.e. for Tenant 'foo', namespace names must be prefixed with 'foo-').
                   This is useful to avoid Namespace name collision.
+                  Optional
                 type: boolean
               imagePullPolicies:
                 description: Specify the allowed values for the imagePullPolicies
