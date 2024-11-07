@@ -46,6 +46,15 @@ spec:
                   Toggles the TLS reconciler, the controller that is able to generate CA and certificates for the webhooks
                   when not using an already provided CA and certificate, or when these are managed externally with Vault, or cert-manager.
                 type: boolean
+              excludedUsers:
+                description: |-
+                  Names of the users to exclude from groups in Capsule completely,
+                  these users will be ignored from any groups watched by Capsule UserGroups.
+                  Use this to exclude specific users/service accounts from Capsule.
+                  Namespaces created by excluded users will therfore not be scoped to a Tenant.
+                items:
+                  type: string
+                type: array
               forceTenantPrefix:
                 default: false
                 description: |-

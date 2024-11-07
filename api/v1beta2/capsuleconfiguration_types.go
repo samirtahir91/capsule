@@ -14,6 +14,11 @@ type CapsuleConfigurationSpec struct {
 	// Names of the groups for Capsule users.
 	// +kubebuilder:default={capsule.clastix.io}
 	UserGroups []string `json:"userGroups,omitempty"`
+	// Names of the users to exclude from groups in Capsule completely,
+	// these users will be ignored from any groups watched by Capsule UserGroups.
+	// Use this to exclude specific users/service accounts from Capsule.
+	// Namespaces created by excluded users will therfore not be scoped to a Tenant.
+	ExcludedUsers []string `json:"excludedUsers,omitempty"`
 	// Enforces the Tenant owner, during Namespace creation, to name it using the selected Tenant name as prefix,
 	// separated by a dash. This is useful to avoid Namespace name collision in a public CaaS environment.
 	// +kubebuilder:default=false

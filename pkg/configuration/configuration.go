@@ -13,6 +13,7 @@ const (
 	TenantCRDName = "tenants.capsule.clastix.io"
 )
 
+//nolint:interfacebloat
 type Configuration interface {
 	ProtectedNamespaceRegexp() (*regexp.Regexp, error)
 	ForceTenantPrefix() bool
@@ -24,6 +25,7 @@ type Configuration interface {
 	ValidatingWebhookConfigurationName() string
 	TenantCRDName() string
 	UserGroups() []string
+	ExcludedUsers() []string
 	ForbiddenUserNodeLabels() *capsuleapi.ForbiddenListSpec
 	ForbiddenUserNodeAnnotations() *capsuleapi.ForbiddenListSpec
 }
